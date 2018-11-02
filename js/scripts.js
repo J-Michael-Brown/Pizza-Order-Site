@@ -1,24 +1,20 @@
  // Business Logic -------------------------------------------------------------
 
- function Topping (toppingName, toppingCost) {
+ function Topping(title, toppingCost) {
    this.cost = toppingCost,
-   this.toppingName = toppingName
+   this.title = title
  }
 
- var cheese = new Topping("Cheese", 0.99);
- var pepperoni = new Topping("Pepperoni", 1.99);
- var meatLovers = new Topping("Meat Lovers", 3.99);
- var supreme = new Topping("Supreme", 3.99);
+ function Size(title, sizeCost) {
+   this.title = title,
+   this.cost = sizeCost
+ }
 
- var winterToppings = [cheese, pepperoni, meatLovers, supreme];
-
-function Pizza (name, size = 1, topping = cheese) {
+function Pizza(name, size, topping) {
   this.name = name,
   this.size = size,
   this.topping = topping
 }
-
-var myPizza = new Pizza ("Michael");
 
 Pizza.prototype.changeSize = function(newSize) {
   if (newSize && newSize < 4 && newSize > 0) {
@@ -28,7 +24,7 @@ Pizza.prototype.changeSize = function(newSize) {
 }
 
 Pizza.prototype.displayInfo = function() {
-  console.log("for: " + this.name + ", size: " + this.size + ", topping type: " + this.topping.toppingName);
+  console.log("for: " + this.name + ", size: " + this.size.title + ", topping type: " + this.topping.title);
   if (this.price) {
     return "current price: " + this.price;
   }
@@ -38,7 +34,7 @@ Pizza.prototype.changeTopping = function(topping){
   if (topping) {
     this.topping = topping;
   }
-  return this.topping.toppingName;
+  return this.topping.title;
 }
 Pizza.prototype.changePrice = function(newPrice) {
   var price = newPrice;
@@ -53,14 +49,45 @@ Pizza.prototype.findPriceOfPizza = function() {
   var size = this.size;
   var newPrice = 9;
 
-  if (size === 2) {
-    newPrice += 3;
-  } else if (size === 3) {
-    newPrice += 5;
-  }
+  newPrice += size.cost;
 
   newPrice += this.topping.cost;
 
   this.changePrice(newPrice);
   return newPrice;
 }
+
+// --------- UI logic -------------------------------------------------------
+
+function returnObjectByName(availableArray, userChoiceString) {
+  var toppings = availableArray;
+  var choice = userChoiceString;
+
+  for (var i = 0; i < toppings.length; i++) {
+    if (choice === toppings[i].title) {
+      return toppings[i];
+    }
+  }
+
+}
+
+$(document).ready(function() {
+
+   var cheese = new Topping("Cheese", 0.99);
+   var pepperoni = new Topping("Pepperoni", 1.99);
+   var meatLovers = new Topping("Meat Lovers", 3.99);
+   var supreme = new Topping("Supreme", 3.99);
+
+   var winterToppings = [cheese, pepperoni, meatLovers, supreme];
+
+  $("form").submit(function(event) {
+    event.preventDefault();
+    var nameInput = $("#nameInput").val();
+    var sizeInput = $("#sizeInput").val();
+    var userPizza = new Pizza(nameInput, sizeInput);
+    var toppingInput = $("#toppingInput").val();
+
+    console.log(userPizza);
+
+  });
+});
