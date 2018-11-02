@@ -59,7 +59,7 @@ Pizza.prototype.findPriceOfPizza = function() {
 
 // --------- UI logic -------------------------------------------------------
 
-function returnObjectByName(userChoiceString, availableArray) {
+function returnObjectByTitle(userChoiceString, availableArray) {
   var arrayUsed = availableArray;
   var choice = userChoiceString;
 
@@ -71,14 +71,14 @@ function returnObjectByName(userChoiceString, availableArray) {
 
 }
 
-function displayOrder(pizzaOrder) {
+ Pizza.prototype.displayOrder = function() {
   $("#buyer-input-field").hide();
   $("#pizza-order-display").show();
 
-  var userName = pizzaOrder.name;
-  var toptype = pizzaOrder.topping.title;
-  var pizzaSize = pizzaOrder.size.title;
-  var totalCost = pizzaOrder.findPriceOfPizza();
+  var userName = this.name;
+  var toptype = this.topping.title;
+  var pizzaSize = this.size.title;
+  var totalCost = this.findPriceOfPizza();
 
   $("#user-name").text(userName);
   $("#pizza-size").text(pizzaSize);
@@ -103,11 +103,11 @@ $(document).ready(function() {
   $("#buyer-input-field").submit(function(event) {
     event.preventDefault();
     var nameInput = $("#nameInput").val();
-    var sizeInput = returnObjectByName($("#sizeInput").val(), sizes);
-    var toppingInput = returnObjectByName($("#toppingInput").val(), winterToppings);
+    var sizeInput = returnObjectByTitle($("#sizeInput").val(), sizes);
+    var toppingInput = returnObjectByTitle($("#toppingInput").val(), winterToppings);
 
     var userPizza = new Pizza(nameInput, sizeInput, toppingInput);
-    displayOrder(userPizza);
+    userPizza.displayOrder();
 
   });
 });
