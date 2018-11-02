@@ -62,13 +62,28 @@ Pizza.prototype.findPriceOfPizza = function() {
 function returnObjectByName(userChoiceString, availableArray) {
   var arrayUsed = availableArray;
   var choice = userChoiceString;
-  // debugger;
 
   for (var i = 0; i < arrayUsed.length; i++) {
     if (choice === arrayUsed[i].title) {
       return arrayUsed[i];
     }
   }
+
+}
+
+function displayOrder(pizzaOrder) {
+  $("#buyer-input-field").hide();
+  $("#pizza-order-display").show();
+
+  var userName = pizzaOrder.name;
+  var toptype = pizzaOrder.topping.title;
+  var pizzaSize = pizzaOrder.size.title;
+  var totalCost = pizzaOrder.findPriceOfPizza();
+
+  $("#user-name").text(userName);
+  $("#pizza-size").text(pizzaSize);
+  $("#topping-type").text(toptype);
+  $("#cost-display").text("$" + totalCost);
 
 }
 
@@ -85,16 +100,14 @@ $(document).ready(function() {
    var largeSize = new Size("Large", 5);
    var sizes = [smallSize, mediumSize, largeSize];
 
-  $("form").submit(function(event) {
+  $("#buyer-input-field").submit(function(event) {
     event.preventDefault();
     var nameInput = $("#nameInput").val();
     var sizeInput = returnObjectByName($("#sizeInput").val(), sizes);
-    console.log(sizeInput);
     var toppingInput = returnObjectByName($("#toppingInput").val(), winterToppings);
-    console.log(toppingInput);
 
     var userPizza = new Pizza(nameInput, sizeInput, toppingInput);
-    console.log(userPizza.displayInfo());
+    displayOrder(userPizza);
 
   });
 });

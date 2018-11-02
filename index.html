@@ -10,29 +10,35 @@
   </head>
   <body>
     <div class="container">
-      <form class="" id="buyerInputField">
-
-        <label for="nameInput">Your Name</label>
-        <input type="text" name="nameInput" id="nameInput">
-
-        <label for="nameInput">Size of Order</label>
-        <select class="form-control" id="sizeInput">
+      <form class="" id="buyer-input-field">
+        <h1>Build Your Pizza</h1>
+        <div class="input-field">
+          <label for="nameInput">Name of Recipient</label>
+          <input type="text" name="nameInput" id="nameInput">
+        </div>
+        <div class="input-field">
+          <label for="nameInput">Size of Order</label>
+          <select class="form-control" id="sizeInput">
             <option>Small</option>
             <option>Medium</option>
             <option>Large</option>
-        </select>
-
-        <label for="nameInput">Topping</label>
-        <select class="form-control" id="toppingInput">
-            <option>Cheese</option>
-            <option>Pepperoni</option>
-            <option>Meat Lovers</option>
-            <option>Supreme</option>
-        </select>
-
-        <button type="submit" name="button">Submit</button>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="nameInput">Topping</label>
+          <select class="form-control" id="toppingInput">
+              <option>Cheese</option>
+              <option>Pepperoni</option>
+              <option>Meat Lovers</option>
+              <option>Supreme</option>
+          </select>
+        </div>
+        <button type="submit" name="button">Create Pizza</button>
       </form>
-
+      <div id="pizza-order-display">
+        <p>Thank you <span id="user-name"></span></p>
+        <p>Your <span id="pizza-size"></span> <span id="topping-type"></span> pizza will cost <span id="cost-display"></span></p>
+      </div>
     </div>
   </body>
 </html>

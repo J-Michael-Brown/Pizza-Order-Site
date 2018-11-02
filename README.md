@@ -27,3 +27,10 @@ Pizza.findPriceOfPizza() adjusts the price of the Pizza object based on its othe
 
 Example input: myPizza.findPriceOfPizza()   
 Example output: 9.99, myPizza {"Michael", 1, cheese, 9.99}
+
+User Interface Logic Specs:
+
+returnObjectByName(userChoiceString, availableArray) method matches a string to an object in an array by the given 'title' associated with those objects, and return that match
+
+Example input: var topping = returnObjectByName("Cheese", toppingChoicesArray)   
+Example output: topping ==> {"Cheese", 0,99}
