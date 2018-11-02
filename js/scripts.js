@@ -27,11 +27,11 @@ Pizza.prototype.changePrice = function(newPrice) {
   return this.price;
 }
 
-Pizza.prototype.findPriceOfPizza = function(toppings) {
-  var currentToppings = toppings;
+Pizza.prototype.findPriceOfPizza = function(toppingsArray) {
+  var currentToppings = toppingsArray;
   var size = this.size;
   var pizzaTopping = this.topping;
-  var newPrice = 9.99;
+  var newPrice = 10;
 
   if (size === 2) {
     newPrice += 3;
@@ -55,5 +55,24 @@ function Topping (toppingName, toppingCost) {
 
 var myPizza = new Pizza ("my pizza");
 var toppings = ["Cheese", "Pepperoni", "Meat Lovers", "Supreme"];
+
+var cheese = new Topping("Cheese", 0.99);
+var pepperoni = new Topping("Pepperoni", 1.99);
+var meatLovers = new Topping("Meat Lovers", 3.99);
+var supreme = new Topping("Supreme", 3.99);
+
+var winterToppings = [cheese, pepperoni, meatLovers, supreme];
+
+Pizza.prototype.findToppingPriceByNameFromArray = function(nameOfTopping, toppingsArray) {
+  console.log("got to use function");
+  for (var i = 0; i < toppingsArray.length; i++) {
+    console.log("got inside for loop for index " + i);
+    if (this.topping === toppingsArray[i].toppingName) {
+      return toppingsArray[i].cost;
+    } else {
+      console.log("skipped " + toppingsArray[i].toppingName);
+    }
+  }
+}
 
 // Considering making topping an object
