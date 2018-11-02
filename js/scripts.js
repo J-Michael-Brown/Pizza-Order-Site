@@ -59,13 +59,14 @@ Pizza.prototype.findPriceOfPizza = function() {
 
 // --------- UI logic -------------------------------------------------------
 
-function returnObjectByName(availableArray, userChoiceString) {
-  var toppings = availableArray;
+function returnObjectByName(userChoiceString, availableArray) {
+  var arrayUsed = availableArray;
   var choice = userChoiceString;
+  // debugger;
 
-  for (var i = 0; i < toppings.length; i++) {
-    if (choice === toppings[i].title) {
-      return toppings[i];
+  for (var i = 0; i < arrayUsed.length; i++) {
+    if (choice === arrayUsed[i].title) {
+      return arrayUsed[i];
     }
   }
 
@@ -77,17 +78,23 @@ $(document).ready(function() {
    var pepperoni = new Topping("Pepperoni", 1.99);
    var meatLovers = new Topping("Meat Lovers", 3.99);
    var supreme = new Topping("Supreme", 3.99);
-
    var winterToppings = [cheese, pepperoni, meatLovers, supreme];
+
+   var smallSize = new Size("Small", 0);
+   var mediumSize = new Size("Medium", 3);
+   var largeSize = new Size("Large", 5);
+   var sizes = [smallSize, mediumSize, largeSize];
 
   $("form").submit(function(event) {
     event.preventDefault();
     var nameInput = $("#nameInput").val();
-    var sizeInput = $("#sizeInput").val();
-    var userPizza = new Pizza(nameInput, sizeInput);
-    var toppingInput = $("#toppingInput").val();
+    var sizeInput = returnObjectByName($("#sizeInput").val(), sizes);
+    console.log(sizeInput);
+    var toppingInput = returnObjectByName($("#toppingInput").val(), winterToppings);
+    console.log(toppingInput);
 
-    console.log(userPizza);
+    var userPizza = new Pizza(nameInput, sizeInput, toppingInput);
+    console.log(userPizza.displayInfo());
 
   });
 });
