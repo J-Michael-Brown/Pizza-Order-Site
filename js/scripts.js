@@ -18,14 +18,14 @@ function Pizza (name, size = 1, topping = cheese) {
   this.topping = topping
 }
 
+var myPizza = new Pizza ("Michael");
+
 Pizza.prototype.changeSize = function(newSize) {
   if (newSize && newSize < 4 && newSize > 0) {
     this.size = newSize;
   }
   return this.size;
 }
-
-var myPizza = new Pizza ("Michael");
 
 Pizza.prototype.displayInfo = function() {
   console.log("for: " + this.name + ", size: " + this.size + ", topping type: " + this.topping.toppingName);
@@ -51,7 +51,6 @@ Pizza.prototype.changePrice = function(newPrice) {
 
 Pizza.prototype.findPriceOfPizza = function() {
   var size = this.size;
-  var pizzaTopping = this.topping;
   var newPrice = 9;
 
   if (size === 2) {
@@ -60,7 +59,7 @@ Pizza.prototype.findPriceOfPizza = function() {
     newPrice += 5;
   }
 
-  newPrice += pizzaTopping.cost;
+  newPrice += this.topping.cost;
 
   this.changePrice(newPrice);
   return newPrice;
