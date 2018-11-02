@@ -3,7 +3,7 @@
 function Pizza (name, topping, size = 1){
   this.name = name,
   this.size = size,
-  this.topping = topping,
+  this.topping = topping
 }
 
 Pizza.prototype.changeSize = function(newSize){
@@ -19,7 +19,7 @@ Pizza.prototype.changePrice = function(newPrice){
   return this.price;
 }
 
-var myPizza = new Pizza ("tester", 2, "Pepperoni");
+var myPizza = new Pizza ("my pizza", 2, "Pepperoni");
 var toppings = ["Cheese", "Pepperoni", "Meat Lovers", "Supreme"];
 
 
@@ -39,6 +39,8 @@ Pizza.prototype.findPriceOfPizza = function(toppings) {
     newPrice += 2;
   }
 
+
+  this.changePrice(newPrice);
   return newPrice;
 }
 
