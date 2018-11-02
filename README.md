@@ -51,8 +51,6 @@ Example of Dom:
 
 
 
-
-
 ## Setup/Installation Requirements
 
   _Requires git to be downloaded on your devise to use instructed git terminal commands._
@@ -65,11 +63,9 @@ Example of Dom:
 
   _4. Clone onto Desktop (type "git clone <url link>" replacing '<url link>' with the link you copied in step 3)_
 
-  _5. Open website in a browser (double click the "Beep-Boop" file on your desktop then double click the "index.html" file)_
+  _5. Open website in a browser (double click the "Pizza-Order-Site" file on your desktop then double click the "index.html" file)_
 
-* _Or open the page at this url: https://j-michael-brown.github.io/Beep-Boop/_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+**Or open the page at this url: https://j-michael-brown.github.io/Pizza-Order-Site/**
 
 ## Known Bugs
 
